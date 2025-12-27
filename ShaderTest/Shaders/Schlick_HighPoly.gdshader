@@ -1,12 +1,18 @@
 shader_type spatial;
 render_mode unshaded;
-render_mode cull_disabled;
 
-uniform vec4 color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
+#define __BLUE vec4(0.039215688, 0.24705882, 0.78431374, 1)
+#define __GRAY vec4(0.5, 0.5, 0.5, 1.0)
+
+uniform vec4 _BASE_COLOR : source_color = __BLUE;
+
 // √(3)/2 =  0.866025403784
-uniform float cosTheta : hint_range(0.0, 1.0) = 0.866025403784;
+uniform float _COSINE_PHI_POSITION_OF_BASE_COLOR : hint_range(0.0, 1.0) = 0.866025403784;
+
+uniform bool _ENABLE_SHADING_SHIFT = false;
+
 // 1/(1-√(3)/2) = 7.464101615
-uniform float k : hint_range(7.464101615, 20.0) = 10.0;
+uniform float _SHADING_SHIFT : hint_range(7.464101615, 20.0) = 10.0;
 
 float ModifiedSchlicksBias(float a, float b, float x) {
 	float c1 = b * (1.0 - a);
@@ -38,26 +44,14 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 }
 
 void fragment() {
-	float facingRatio;
-	{
-	    vec3 normal = normalize(NORMAL);
-	    vec3 brightPole = normalize(vec3(0.0, 0.0, 1.0));
-	    float dotProduct = dot(normal, brightPole);
-		facingRatio = clamp(dotProduct, 0.0, 1.0);
-		// facingRatio = clamp(NORMAL.z, 0.0, 1.0);
-	}
-
-	float cosTheta2 = (cosTheta-(NORMAL.x/k));
-	//float cosTheta2 = cosTheta;
+	vec3 normal = normalize(NORMAL);
+	float cosPhi = normal.z;
+	float facingRatio = clamp(cosPhi, 0.0, 1.0);
+	float cosTheta = normal.x;
+	float cosPhiPosShifted = (_COSINE_PHI_POSITION_OF_BASE_COLOR - float(_ENABLE_SHADING_SHIFT) * (cosTheta / _SHADING_SHIFT));
 
 	ALBEDO = vec3(
-		//ModifiedSchlicksBias_Safe(cosTheta, color.r, facingRatio),
-		//ModifiedSchlicksBias_Safe(cosTheta, color.r, facingRatio)+(1.0*NORMAL.x/(pow(2.0, 4.0))),
-		ModifiedSchlicksBias_Safe(cosTheta2, color.r, facingRatio),
-		ModifiedSchlicksBias_Safe(cosTheta2, color.g, facingRatio),
-		ModifiedSchlicksBias_Safe(cosTheta2, color.b, facingRatio));
-
-    if (!FRONT_FACING) {
-        ALBEDO = vec3(0.0);
-    }
+		ModifiedSchlicksBias_Safe(cosPhiPosShifted, _BASE_COLOR.r, facingRatio),
+		ModifiedSchlicksBias_Safe(cosPhiPosShifted, _BASE_COLOR.g, facingRatio),
+		ModifiedSchlicksBias_Safe(cosPhiPosShifted, _BASE_COLOR.b, facingRatio));
 }
