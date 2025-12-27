@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_s10un")
-shader_parameter/_BASE_COLOR = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/_BASE_COLOR = Color(0.735357, 0.368734, 0.70975083, 1)
 shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.57735026
 shader_parameter/_ENABLE_SHADING_SHIFT = true
 shader_parameter/_SHADING_SHIFT = 7.0

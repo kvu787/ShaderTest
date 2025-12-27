@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu87mla1vkmyx"]
+[gd_scene load_steps=11 format=3 uid="uid://cu87mla1vkmyx"]
 
 [ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://Shaders/GrayScale.gdshader" id="1_glv2v"]
+[ext_resource type="Material" uid="uid://bc7vleer4rawk" path="res://Materials/PinkPale_HighPoly.tres" id="2_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
 [ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick_LowPoly.gdshader" id="3_r0du0"]
-[ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue_HighPoly.tres" id="4_cm0pq"]
-[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/PinkPale_LowPoly.tres" id="4_fos0i"]
 [ext_resource type="Material" uid="uid://b6rxsdckyq2i4" path="res://Materials/Scratch_HighPoly.tres" id="5_v1gob"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rxg2q"]
@@ -37,8 +36,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_uu6xs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7071066, -0.70710653, 0, 0.40860695, 0.40860692, 0.8161374, -0.5770963, -0.5770962, 0.57785743, 0, 0, 0)
+material_override = ExtResource("2_jw32o")
 mesh = SubResource("BoxMesh_glv2v")
-surface_material_override/0 = ExtResource("4_fos0i")
 
 [node name="Suzanne" parent="." instance=ExtResource("2_uu6xs")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
@@ -55,13 +54,11 @@ environment = SubResource("Environment_uu6xs")
 [node name="Suzanne" parent="Suzanne2" index="0"]
 transform = Transform3D(0.8480479, 0.1593498, 0.5053929, 0, 0.95371693, -0.30070576, -0.52991915, 0.25501296, 0.8087977, -2.7841527, 0, 0)
 material_override = ExtResource("5_v1gob")
-surface_material_override/0 = ExtResource("4_cm0pq")
 
 [node name="Sphere2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.6991687, 0, 1.3426646)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.699, 0, 0)
 material_override = ExtResource("5_v1gob")
 mesh = SubResource("SphereMesh_rxg2q")
-surface_material_override/0 = ExtResource("4_cm0pq")
 
 [editable path="Suzanne"]
 [editable path="Suzanne2"]
