@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cu87mla1vkmyx"]
 
-[ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://GrayScale.gdshader" id="1_glv2v"]
-[ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Suzanne.tscn" id="2_uu6xs"]
-[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Schlick.gdshader" id="3_r0du0"]
-[ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Blue.tres" id="4_cm0pq"]
-[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Scratch.tres" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://Shaders/GrayScale.gdshader" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
+[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick.gdshader" id="3_r0du0"]
+[ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue.tres" id="4_cm0pq"]
+[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/Scratch.tres" id="4_fos0i"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rxg2q"]
 radial_segments = 128

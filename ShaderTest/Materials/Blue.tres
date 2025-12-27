@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jp5bqj3plcsj"]
 
-[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Schlick.gdshader" id="1_ym4g7"]
+[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick.gdshader" id="1_ym4g7"]
 
 [resource]
 render_priority = 0

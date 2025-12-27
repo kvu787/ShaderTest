@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi2j61lc41jfb"]
 
-[ext_resource type="PackedScene" uid="uid://bari11n42h4g3" path="res://Suzanne.glb" id="1_ygllu"]
+[ext_resource type="PackedScene" uid="uid://bari11n42h4g3" path="res://GLB/Suzanne.glb" id="1_ygllu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyv2g"]
 cull_mode = 2
