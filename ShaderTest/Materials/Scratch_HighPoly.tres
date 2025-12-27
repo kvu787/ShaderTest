@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ascwq")
-shader_parameter/_BASE_COLOR = Color(0.4835999, 0.03900001, 0.78, 1)
+shader_parameter/_BASE_COLOR = Color(0.4941, 0.17820002, 0.81, 1)
 shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.8660254
 shader_parameter/_ENABLE_SHADING_SHIFT = false
 shader_parameter/_SHADING_SHIFT = 10.0
