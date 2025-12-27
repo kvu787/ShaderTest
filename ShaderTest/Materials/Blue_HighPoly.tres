@@ -1,9 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jp5bqj3plcsj"]
 
-[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick.gdshader" id="1_ym4g7"]
+[ext_resource type="Shader" uid="uid://b14gisdqxquoh" path="res://Shaders/Schlick_HighPoly.gdshader" id="1_ilcbb"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_ym4g7")
+shader = ExtResource("1_ilcbb")
 shader_parameter/color = Color(0.039215688, 0.24705882, 0.78431374, 1)
 shader_parameter/cosTheta = 0.8660254
+shader_parameter/k = 10.0

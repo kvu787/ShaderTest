@@ -3,11 +3,10 @@ render_mode unshaded;
 render_mode cull_disabled;
 
 uniform vec4 color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
-// √(3)/2 =  0.866025403784
-uniform float cosTheta : hint_range(0.0, 1.0) = 0.866025403784;
-uniform float k = 10.0;
-// 1/(1-√(3)/2) = 4+2√(3) = 7.464101615
-//uniform float k : hint_range(7.464101615, 20.0) = 10.0;
+// √(3)/3 =  0.5773502692
+uniform float cosTheta : hint_range(0.0, 1.0) = 0.5773502692;
+// 1/(1-√(3)/3) = 2.366025404
+uniform float k : hint_range(2.366025404, 20.0) = 7.0;
 
 float ModifiedSchlicksBias(float a, float b, float x) {
 	float c1 = b * (1.0 - a);

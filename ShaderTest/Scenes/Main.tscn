@@ -2,9 +2,9 @@
 
 [ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://Shaders/GrayScale.gdshader" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
-[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick.gdshader" id="3_r0du0"]
-[ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue.tres" id="4_cm0pq"]
-[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/Scratch.tres" id="4_fos0i"]
+[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick_LowPoly.gdshader" id="3_r0du0"]
+[ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue_HighPoly.tres" id="4_cm0pq"]
+[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/PinkPale_LowPoly.tres" id="4_fos0i"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rxg2q"]
 radial_segments = 128
@@ -34,7 +34,7 @@ mesh = SubResource("SphereMesh_rxg2q")
 surface_material_override/0 = SubResource("ShaderMaterial_uu6xs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7071067, -0.70710677, 0, 0.57709634, 0.5770964, -0.57785755, 0.408607, 0.40860704, 0.81613755, 0, 0, 0)
+transform = Transform3D(0.7071066, -0.70710653, 0, 0.40860695, 0.40860692, 0.8161374, -0.5770963, -0.5770962, 0.57785743, 0, 0, 0)
 mesh = SubResource("BoxMesh_glv2v")
 surface_material_override/0 = ExtResource("4_fos0i")
 
@@ -49,17 +49,15 @@ surface_material_override/0 = SubResource("ShaderMaterial_r0du0")
 environment = SubResource("Environment_uu6xs")
 
 [node name="Suzanne2" parent="." instance=ExtResource("2_uu6xs")]
-visible = false
 
 [node name="Suzanne" parent="Suzanne2" index="0"]
-transform = Transform3D(0.8480479, 0.1593498, 0.5053929, 0, 0.95371693, -0.30070576, -0.52991915, 0.25501296, 0.8087977, -1.49, 0, 0)
-material_override = ExtResource("4_fos0i")
+transform = Transform3D(0.8480479, 0.1593498, 0.5053929, 0, 0.95371693, -0.30070576, -0.52991915, 0.25501296, 0.8087977, -2.7841527, 0, 0)
+material_override = ExtResource("4_cm0pq")
 surface_material_override/0 = ExtResource("4_cm0pq")
 
 [node name="Sphere2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.5366244, 0, 1.3426646)
-visible = false
-material_override = ExtResource("4_fos0i")
+transform = Transform3D(1.9996812, 0, 0.03570754, 0, 2, 0, -0.03570754, 0, 1.9996812, 2.6991687, 0, 1.3426646)
+material_override = ExtResource("4_cm0pq")
 mesh = SubResource("SphereMesh_rxg2q")
 surface_material_override/0 = ExtResource("4_cm0pq")
 
