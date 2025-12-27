@@ -8,4 +8,4 @@ shader = ExtResource("1_ilcbb")
 shader_parameter/_BASE_COLOR = Color(0.039215688, 0.24705882, 0.78431374, 1)
 shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.8660254
 shader_parameter/_ENABLE_SHADING_SHIFT = false
-shader_parameter/_SHADING_SHIFT = 10.0
+shader_parameter/_SHADING_SHIFT = 0.5

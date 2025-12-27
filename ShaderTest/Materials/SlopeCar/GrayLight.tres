@@ -8,4 +8,4 @@ shader = ExtResource("1_hsn72")
 shader_parameter/_BASE_COLOR = Color(0.75, 0.75, 0.75, 1)
 shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.8660254
 shader_parameter/_ENABLE_SHADING_SHIFT = true
-shader_parameter/_SHADING_SHIFT = 20.0
+shader_parameter/_SHADING_SHIFT = 0.5
