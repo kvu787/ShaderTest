@@ -10,13 +10,15 @@ uniform float _COSINE_PHI_POSITION_OF_BASE_COLOR : hint_range(0.0, 1.0) = 0.8660
 uniform bool _ENABLE_SHADING_SHIFT = false;
 // 1/(1-√(3)/2) = 7.464101615
 uniform float _SHADING_SHIFT : hint_range(7.464101615, 20.0) = 10.0;
+uniform float _SHADING_SHIFT_2 : hint_range(0, 0.1339745962) = 0.0669872981;
 
 void fragment() {
 	vec3 normal = normalize(NORMAL);
 	float cosineTheta = normal.x;
 	float cosinePhi = normal.z;
 
-	float cosinePhiPositionShifted = (_COSINE_PHI_POSITION_OF_BASE_COLOR - float(_ENABLE_SHADING_SHIFT) * (cosineTheta / _SHADING_SHIFT));
+	//float cosinePhiPositionShifted = (_COSINE_PHI_POSITION_OF_BASE_COLOR - float(_ENABLE_SHADING_SHIFT) * (cosineTheta / _SHADING_SHIFT));
+	float cosinePhiPositionShifted = (_COSINE_PHI_POSITION_OF_BASE_COLOR - float(_ENABLE_SHADING_SHIFT) * (cosineTheta * _SHADING_SHIFT_2));
 	float facingRatio = clamp(cosinePhi, 0.0, 1.0);
 
 	ALBEDO = vec3(
