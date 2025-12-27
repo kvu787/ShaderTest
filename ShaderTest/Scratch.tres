@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c17ukj0w7ljm4"]
+
+[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Schlick.gdshader" id="1_s10un"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_s10un")
+shader_parameter/color = Color(0.735357, 0.368734, 0.70975083, 1)
+shader_parameter/cosTheta = 0.5770000274075
+shader_parameter/k = 1000.0

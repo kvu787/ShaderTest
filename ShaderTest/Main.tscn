@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://cu87mla1vkmyx"]
+
+[ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://GrayScale.gdshader" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Suzanne.tscn" id="2_uu6xs"]
+[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Schlick.gdshader" id="3_r0du0"]
+[ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Blue.tres" id="4_cm0pq"]
+[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Scratch.tres" id="4_fos0i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rxg2q"]
+radial_segments = 128
+rings = 64
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
+render_priority = 0
+shader = ExtResource("3_r0du0")
+shader_parameter/color = Color(0.039215688, 0.24705882, 0.78431374, 1)
+shader_parameter/cosTheta = 0.8660254
+shader_parameter/k = 10.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0du0"]
+render_priority = 0
+shader = ExtResource("1_glv2v")
+shader_parameter/target_direction = Vector3(1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_uu6xs"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.108263, 0, -0.27526855)
+mesh = SubResource("SphereMesh_rxg2q")
+surface_material_override/0 = SubResource("ShaderMaterial_uu6xs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7071067, -0.70710677, 0, 0.57709634, 0.5770964, -0.57785755, 0.408607, 0.40860704, 0.81613755, 0, 0, 0)
+mesh = SubResource("BoxMesh_glv2v")
+surface_material_override/0 = ExtResource("4_fos0i")
+
+[node name="Suzanne" parent="." instance=ExtResource("2_uu6xs")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Suzanne" parent="Suzanne" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.924789, 0, -6.863396)
+surface_material_override/0 = SubResource("ShaderMaterial_r0du0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uu6xs")
+
+[node name="Suzanne2" parent="." instance=ExtResource("2_uu6xs")]
+visible = false
+
+[node name="Suzanne" parent="Suzanne2" index="0"]
+transform = Transform3D(0.8480479, 0.1593498, 0.5053929, 0, 0.95371693, -0.30070576, -0.52991915, 0.25501296, 0.8087977, -1.49, 0, 0)
+material_override = ExtResource("4_fos0i")
+surface_material_override/0 = ExtResource("4_cm0pq")
+
+[node name="Sphere2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.5366244, 0, 1.3426646)
+visible = false
+material_override = ExtResource("4_fos0i")
+mesh = SubResource("SphereMesh_rxg2q")
+surface_material_override/0 = ExtResource("4_cm0pq")
+
+[editable path="Suzanne"]
+[editable path="Suzanne2"]
