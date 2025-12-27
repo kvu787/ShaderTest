@@ -38,9 +38,9 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	} else if ((a == 1.0) && (b == 1.0)) {
 		return x;
 	}
-	// Fallback return to satisfy GLSL compiler strictness 
+	// Fallback return to satisfy GLSL compiler strictness
 	// (in case inputs float outside the explicit checks above)
-	return x; 
+	return x;
 }
 
 void vertex() {
@@ -60,7 +60,7 @@ void fragment() {
 	float facingRatio = clamp(dot_prod, 0.0, 1.0);
 
 	// 3. Apply Bias
-	// Because the logic relies on scalar if/else checks, we cannot vectorize this 
+	// Because the logic relies on scalar if/else checks, we cannot vectorize this
 	// efficiently. We must run it 3 times (R, G, B).
 	ALBEDO = vec3(
 		ModifiedSchlicksBias_Safe(cosTheta, color.r, facingRatio),
