@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cu87mla1vkmyx"]
 
 [ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://Shaders/GrayScale.gdshader" id="1_glv2v"]
-[ext_resource type="Material" uid="uid://bc7vleer4rawk" path="res://Materials/PinkPale_HighPoly.tres" id="2_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
 [ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick_LowPoly.gdshader" id="3_r0du0"]
-[ext_resource type="Material" uid="uid://b6rxsdckyq2i4" path="res://Materials/Scratch_HighPoly.tres" id="5_v1gob"]
+[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/PinkPale_LowPoly.tres" id="5_pbw6q"]
+[ext_resource type="Material" uid="uid://b6rxsdckyq2i4" path="res://Materials/Purple_HighPoly.tres" id="5_v1gob"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rxg2q"]
 radial_segments = 128
@@ -18,8 +18,6 @@ shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.57735026
 shader_parameter/_ENABLE_SHADING_SHIFT = false
 shader_parameter/_SHADING_SHIFT = 7.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0du0"]
 render_priority = 0
 shader = ExtResource("1_glv2v")
@@ -27,17 +25,14 @@ shader_parameter/target_direction = Vector3(1, 1, 1)
 
 [sub_resource type="Environment" id="Environment_uu6xs"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.108263, 0, -0.27526855)
 mesh = SubResource("SphereMesh_rxg2q")
 surface_material_override/0 = SubResource("ShaderMaterial_uu6xs")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7071066, -0.70710653, 0, 0.40860695, 0.40860692, 0.8161374, -0.5770963, -0.5770962, 0.57785743, 0, 0, 0)
-material_override = ExtResource("2_jw32o")
-mesh = SubResource("BoxMesh_glv2v")
 
 [node name="Suzanne" parent="." instance=ExtResource("2_uu6xs")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
@@ -52,13 +47,23 @@ environment = SubResource("Environment_uu6xs")
 [node name="Suzanne2" parent="." instance=ExtResource("2_uu6xs")]
 
 [node name="Suzanne" parent="Suzanne2" index="0"]
-transform = Transform3D(0.8480479, 0.1593498, 0.5053929, 0, 0.95371693, -0.30070576, -0.52991915, 0.25501296, 0.8087977, -2.7841527, 0, 0)
+transform = Transform3D(0.8480479, 0.1593498, 0.5053929, 0, 0.95371693, -0.30070576, -0.52991915, 0.25501296, 0.8087977, -4.2724, 0, 0)
 material_override = ExtResource("5_v1gob")
 
 [node name="Sphere2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.699, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.6798825, 0, 0)
 material_override = ExtResource("5_v1gob")
 mesh = SubResource("SphereMesh_rxg2q")
+
+[node name="Sphere3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.079922, 0, 0)
+material_override = ExtResource("5_pbw6q")
+mesh = SubResource("SphereMesh_rxg2q")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7071066, -0.7071065, 0, 0.40860695, 0.40860686, 0.81613743, -0.5770963, -0.57709616, 0.5778575, 1.5240201, 0, 0)
+material_override = ExtResource("5_pbw6q")
+mesh = SubResource("BoxMesh_glv2v")
 
 [editable path="Suzanne"]
 [editable path="Suzanne2"]

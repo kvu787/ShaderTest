@@ -4,7 +4,7 @@ render_mode unshaded;
 #include "Colors.gdshaderinc"
 #include "Schlick.gdshaderinc"
 
-uniform vec4 _BASE_COLOR : source_color = __PINK_PALE;
+uniform vec4 _BASE_COLOR : source_color = __PINK_BRIGHT;
 // √(3)/3 =  0.5773502692
 uniform float _COSINE_PHI_POSITION_OF_BASE_COLOR : hint_range(0.0, 1.0) = 0.5773502692;
 uniform bool _ENABLE_SHADING_SHIFT = true;
