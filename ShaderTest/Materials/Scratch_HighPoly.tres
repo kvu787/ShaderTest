@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_4tocd")
-shader_parameter/_BASE_COLOR = Color(0.42240265, 0.36466637, 0.49580157, 1)
+shader_parameter/_BASE_COLOR = Color(0, 0.5333333, 1, 1)
 shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.8660254
 shader_parameter/_ENABLE_SHADING_SHIFT = false
 shader_parameter/_SHADING_SHIFT = 0.5

@@ -6,8 +6,8 @@
 [ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/PinkPale_LowPoly.tres" id="5_pbw6q"]
 [ext_resource type="Material" uid="uid://b6rxsdckyq2i4" path="res://Materials/Purple_HighPoly.tres" id="5_v1gob"]
 [ext_resource type="PackedScene" uid="uid://8g67m0etccf8" path="res://Scenes/SlopeCar.tscn" id="6_v1gob"]
-[ext_resource type="Material" uid="uid://c824u6r8h6lo8" path="res://Materials/SlopeCar/Body.tres" id="7_bmxlf"]
-[ext_resource type="Material" uid="uid://by8p864q2wa00" path="res://Materials/SlopeCar/Cabin.tres" id="8_50glp"]
+[ext_resource type="Material" uid="uid://b6l8v1w7w5pn4" path="res://Materials/SlopeCar/Body2.tres" id="7_bmxlf"]
+[ext_resource type="Material" uid="uid://5y1d7uugf8ul" path="res://Materials/SlopeCar/Cabin2.tres" id="8_bmxlf"]
 [ext_resource type="Material" uid="uid://cad51reassoni" path="res://Materials/SlopeCar/Headlights.tres" id="9_vy5pj"]
 [ext_resource type="Material" uid="uid://bfbpj4jdu2nm1" path="res://Materials/SlopeCar/Wheels.tres" id="10_bmxlf"]
 
@@ -82,12 +82,12 @@ projection = 1
 size = 5.725
 
 [node name="SlopeCar" parent="Node3D2" instance=ExtResource("6_v1gob")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
 
 [node name="_SlopeCar" parent="Node3D2/SlopeCar" index="0"]
 material_override = null
 surface_material_override/0 = ExtResource("7_bmxlf")
-surface_material_override/1 = ExtResource("8_50glp")
+surface_material_override/1 = ExtResource("8_bmxlf")
 surface_material_override/2 = ExtResource("9_vy5pj")
 surface_material_override/3 = ExtResource("10_bmxlf")
 

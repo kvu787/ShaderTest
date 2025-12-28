@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_h68tg")
-shader_parameter/_BASE_COLOR = Color(0.5612, 0.6808001, 0.92, 1)
-shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.8660254
+shader_parameter/_BASE_COLOR = Color(0.5985, 0.79768324, 0.95, 1)
+shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.866000041135
 shader_parameter/_ENABLE_SHADING_SHIFT = false
 shader_parameter/_SHADING_SHIFT = 0.5
