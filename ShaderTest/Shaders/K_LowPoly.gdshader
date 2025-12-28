@@ -1,8 +1,8 @@
 shader_type spatial;
 render_mode unshaded;
 
-#include "Colors.gdshaderinc"
-#include "Schlick.gdshaderinc"
+#include "res://Shaders/Inc/Colors.gdshaderinc"
+#include "res://Shaders/Inc/Schlick.gdshaderinc"
 
 uniform vec4 _BASE_COLOR : source_color = __PINK_BRIGHT;
 // √(3)/3 =  0.5773502692

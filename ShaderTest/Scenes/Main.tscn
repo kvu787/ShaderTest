@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://Shaders/GrayScale.gdshader" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
-[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/Schlick_LowPoly.gdshader" id="3_r0du0"]
+[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/K_LowPoly.gdshader" id="3_r0du0"]
 [ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue_HighPoly.tres" id="4_bmxlf"]
 [ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/PinkPale_LowPoly.tres" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://8g67m0etccf8" path="res://Scenes/SlopeCar.tscn" id="6_v1gob"]

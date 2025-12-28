@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://2e86xnjf7al"]
 
-[ext_resource type="Shader" uid="uid://b14gisdqxquoh" path="res://Shaders/Schlick_HighPoly.gdshader" id="1_r5whu"]
+[ext_resource type="Shader" uid="uid://b14gisdqxquoh" path="res://Shaders/K.gdshader" id="1_r5whu"]
 
 [resource]
 render_priority = 0
