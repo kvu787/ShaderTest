@@ -16,7 +16,8 @@ void fragment() {
 	float cosinePhi = normal.z;
 
 	float maxShift = min(_COSINE_PHI_POSITION_OF_BASE_COLOR, abs(1.0 - _COSINE_PHI_POSITION_OF_BASE_COLOR));
-	float cosinePhiPositionShifted = (_COSINE_PHI_POSITION_OF_BASE_COLOR - float(_ENABLE_SHADING_SHIFT) * (cosineTheta * _SHADING_SHIFT * maxShift));
+	float cosinePhiPositionShifted = _COSINE_PHI_POSITION_OF_BASE_COLOR
+		- float(_ENABLE_SHADING_SHIFT) * (cosineTheta * _SHADING_SHIFT * maxShift);
 	cosinePhiPositionShifted = clamp(cosinePhiPositionShifted, 0.0, 1.0);
 	float facingRatio = clamp(cosinePhi, 0.0, 1.0);
 
