@@ -1,8 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cu87mla1vkmyx"]
+[gd_scene load_steps=12 format=3 uid="uid://cu87mla1vkmyx"]
 
-[ext_resource type="Shader" uid="uid://oxoa5pjjkt8p" path="res://Shaders/GrayScale.gdshader" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
-[ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/K_LowPoly.gdshader" id="3_r0du0"]
 [ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue_HighPoly.tres" id="4_bmxlf"]
 [ext_resource type="Material" uid="uid://b4qvkcl5acwvr" path="res://Materials/Blue_LowPoly.tres" id="5_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://8g67m0etccf8" path="res://Scenes/SlopeCar.tscn" id="6_v1gob"]
@@ -11,40 +9,15 @@
 [ext_resource type="Material" uid="uid://cad51reassoni" path="res://Materials/SlopeCar/Headlights.tres" id="9_vy5pj"]
 [ext_resource type="Material" uid="uid://bfbpj4jdu2nm1" path="res://Materials/SlopeCar/Wheels.tres" id="10_bmxlf"]
 
+[sub_resource type="Environment" id="Environment_uu6xs"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_rxg2q"]
 radial_segments = 128
 rings = 64
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
-render_priority = 0
-shader = ExtResource("3_r0du0")
-shader_parameter/_BASE_COLOR = Color(0.5, 0.5, 0.5, 1)
-shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.57735026
-shader_parameter/_ENABLE_SHADING_SHIFT = false
-shader_parameter/_SHADING_SHIFT = 7.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0du0"]
-render_priority = 0
-shader = ExtResource("1_glv2v")
-shader_parameter/target_direction = Vector3(1, 1, 1)
-
-[sub_resource type="Environment" id="Environment_uu6xs"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.108263, 0, -0.27526855)
-mesh = SubResource("SphereMesh_rxg2q")
-surface_material_override/0 = SubResource("ShaderMaterial_uu6xs")
-
-[node name="Suzanne" parent="." instance=ExtResource("2_uu6xs")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
-
-[node name="Suzanne" parent="Suzanne" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.924789, 0, -6.863396)
-surface_material_override/0 = SubResource("ShaderMaterial_r0du0")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uu6xs")
@@ -92,6 +65,5 @@ surface_material_override/1 = ExtResource("8_bmxlf")
 surface_material_override/2 = ExtResource("9_vy5pj")
 surface_material_override/3 = ExtResource("10_bmxlf")
 
-[editable path="Suzanne"]
 [editable path="Suzanne2"]
 [editable path="Pivot/SlopeCar"]
