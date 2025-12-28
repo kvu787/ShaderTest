@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bi2j61lc41jfb" path="res://Scenes/Suzanne.tscn" id="2_uu6xs"]
 [ext_resource type="Shader" uid="uid://bxqoji5byvpcw" path="res://Shaders/K_LowPoly.gdshader" id="3_r0du0"]
 [ext_resource type="Material" uid="uid://jp5bqj3plcsj" path="res://Materials/Blue_HighPoly.tres" id="4_bmxlf"]
-[ext_resource type="Material" uid="uid://c17ukj0w7ljm4" path="res://Materials/PinkPale_LowPoly.tres" id="5_pbw6q"]
+[ext_resource type="Material" uid="uid://b4qvkcl5acwvr" path="res://Materials/Blue_LowPoly.tres" id="5_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://8g67m0etccf8" path="res://Scenes/SlopeCar.tscn" id="6_v1gob"]
 [ext_resource type="Material" uid="uid://b6l8v1w7w5pn4" path="res://Materials/SlopeCar/Body2.tres" id="7_bmxlf"]
 [ext_resource type="Material" uid="uid://5y1d7uugf8ul" path="res://Materials/SlopeCar/Cabin2.tres" id="8_bmxlf"]
@@ -62,29 +62,30 @@ mesh = SubResource("SphereMesh_rxg2q")
 
 [node name="Sphere3" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.8867354, 0, 0)
-material_override = ExtResource("5_pbw6q")
+material_override = ExtResource("5_bmxlf")
 mesh = SubResource("SphereMesh_rxg2q")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7071066, -0.7071065, 0, 0.40860695, 0.40860686, 0.81613743, -0.5770963, -0.57709616, 0.5778575, 1.3737639, 0, 0)
-material_override = ExtResource("5_pbw6q")
+material_override = ExtResource("5_bmxlf")
 mesh = SubResource("BoxMesh_glv2v")
 
-[node name="Node3D2" type="Node3D" parent="."]
+[node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9273682, 0, 9.402172)
+visible = false
 
-[node name="CameraPivot" type="Node3D" parent="Node3D2"]
+[node name="CameraPivot" type="Node3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.8161376, 0.5778576, 0, -0.5778576, 0.8161376, 0, 0.8577118, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Node3D2/CameraPivot"]
+[node name="Camera3D" type="Camera3D" parent="Pivot/CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
 projection = 1
 size = 5.725
 
-[node name="SlopeCar" parent="Node3D2" instance=ExtResource("6_v1gob")]
+[node name="SlopeCar" parent="Pivot" instance=ExtResource("6_v1gob")]
 transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
 
-[node name="_SlopeCar" parent="Node3D2/SlopeCar" index="0"]
+[node name="_SlopeCar" parent="Pivot/SlopeCar" index="0"]
 material_override = null
 surface_material_override/0 = ExtResource("7_bmxlf")
 surface_material_override/1 = ExtResource("8_bmxlf")
@@ -93,4 +94,4 @@ surface_material_override/3 = ExtResource("10_bmxlf")
 
 [editable path="Suzanne"]
 [editable path="Suzanne2"]
-[editable path="Node3D2/SlopeCar"]
+[editable path="Pivot/SlopeCar"]
