@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi2j61lc41jfb"]
+[gd_scene load_steps=3 format=3 uid="uid://dygrb3acjjtqy"]
 
-[ext_resource type="PackedScene" uid="uid://bari11n42h4g3" path="res://GLB/Suzanne.glb" id="1_ygllu"]
+[ext_resource type="PackedScene" uid="uid://bomc0g8dsietd" path="res://GLB/Suzanne.glb" id="1_6oini"]
+[ext_resource type="Material" uid="uid://72ttu2bkwh7q" path="res://Materials/GrayScale.tres" id="2_ck3ck"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyv2g"]
-cull_mode = 2
-albedo_color = Color(0.4392157, 0.32941177, 0.7058824, 1)
+[node name="Suzanne" instance=ExtResource("1_6oini")]
 
-[node name="Suzanne2" instance=ExtResource("1_ygllu")]
-
-[node name="Suzanne" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_qyv2g")
+[node name="_Suzanne" parent="." index="0"]
+material_override = ExtResource("2_ck3ck")

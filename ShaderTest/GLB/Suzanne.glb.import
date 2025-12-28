@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bari11n42h4g3"
+uid="uid://bomc0g8dsietd"
 path="res://.godot/imported/Suzanne.glb-968d41683526bb9b7e2f89ecb9eb5dc5.scn"
 
 [deps]
@@ -21,7 +21,7 @@ nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
-meshes/ensure_tangents=true
+meshes/ensure_tangents=false
 meshes/generate_lods=false
 meshes/create_shadow_meshes=false
 meshes/light_baking=0
