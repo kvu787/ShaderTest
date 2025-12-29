@@ -13,8 +13,8 @@ uniform float _SHADING_SHIFT_RATIO : hint_range(0, 1.0) = 0.5;
 void fragment() {
 	vec3 normal = normalize(NORMAL);
 
-	float maxShift = min(_FACING_RATIO_POSITION_OF_BASE_COLOR, 1.0 - _FACING_RATIO_POSITION_OF_BASE_COLOR);
-	float shadingShift = float(_ENABLE_SHADING_SHIFT) * (normal.x * _SHADING_SHIFT_RATIO * maxShift);
+	float maxShadingShift = min(_FACING_RATIO_POSITION_OF_BASE_COLOR, 1.0 - _FACING_RATIO_POSITION_OF_BASE_COLOR);
+	float shadingShift = float(_ENABLE_SHADING_SHIFT) * (normal.x * _SHADING_SHIFT_RATIO * maxShadingShift);
 	float facingRatioPositionOfBaseColor = clamp(_FACING_RATIO_POSITION_OF_BASE_COLOR - shadingShift, 0.0, 1.0);
 	float facingRatio = clamp(normal.z, 0.0, 1.0);
 
