@@ -12,17 +12,17 @@ uniform float _SHADING_SHIFT : hint_range(0, 1.0) = 0.5;
 
 void fragment() {
 	vec3 normal = normalize(NORMAL);
-	float cosineTheta = normal.x;
+	float xComponent = normal.x;
 	float cosinePhi = normal.z;
 
 	float maxShift = min(_COSINE_PHI_POSITION_OF_BASE_COLOR, abs(1.0 - _COSINE_PHI_POSITION_OF_BASE_COLOR));
-	float cosinePhiPositionShifted = _COSINE_PHI_POSITION_OF_BASE_COLOR
-		- float(_ENABLE_SHADING_SHIFT) * (cosineTheta * _SHADING_SHIFT * maxShift);
-	cosinePhiPositionShifted = clamp(cosinePhiPositionShifted, 0.0, 1.0);
+	float xComponentShifted = _COSINE_PHI_POSITION_OF_BASE_COLOR
+		- float(_ENABLE_SHADING_SHIFT) * (xComponent * _SHADING_SHIFT * maxShift);
+	xComponentShifted = clamp(xComponentShifted, 0.0, 1.0);
 	float facingRatio = clamp(cosinePhi, 0.0, 1.0);
 
 	ALBEDO = vec3(
-		ModifiedSchlicksBias_Safe(cosinePhiPositionShifted, _BASE_COLOR.r, facingRatio),
-		ModifiedSchlicksBias_Safe(cosinePhiPositionShifted, _BASE_COLOR.g, facingRatio),
-		ModifiedSchlicksBias_Safe(cosinePhiPositionShifted, _BASE_COLOR.b, facingRatio));
+		ModifiedSchlicksBias_Safe(xComponentShifted, _BASE_COLOR.r, facingRatio),
+		ModifiedSchlicksBias_Safe(xComponentShifted, _BASE_COLOR.g, facingRatio),
+		ModifiedSchlicksBias_Safe(xComponentShifted, _BASE_COLOR.b, facingRatio));
 }
