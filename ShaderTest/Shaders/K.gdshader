@@ -11,14 +11,14 @@ uniform bool _ENABLE_SHADING_SHIFT = false;
 uniform float _SHADING_SHIFT_RATIO : hint_range(0, 1.0) = 0.5;
 uniform float _SHADING_SHIFT_ROTATION_DEGREES : hint_range(0, 360.0) = 0.0;
 
-vec2 rotate(vec2 uv, float angle) {
+vec2 rotate(vec2 xy, float angle) {
     float s = sin(angle);
     float c = cos(angle);
     // Standard CCW Matrix: [ c  -s ]
     //                      [ s   c ]
     // GLSL Column-Major: vec2(c, s), vec2(-s, c)
     mat2 rotation_matrix = mat2(vec2(c, s), vec2(-s, c));
-    return rotation_matrix * uv;
+    return rotation_matrix * xy;
 }
 
 void fragment() {
