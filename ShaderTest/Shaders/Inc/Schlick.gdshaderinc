@@ -9,10 +9,10 @@
 	2. A Convenient Generalization of Schlick's Bias and Gain Function, 2020, Jonathan T. Barron
 */
 float Schlick1_Raw(float a, float b, float x) {
-	float c1 = b * (1.0 - a);
-	float c2 = b - a;
-	float c3 = a * (1.0 - b);
-	return (c1 * x) / (c2 * x + c3);
+	float k1 = b * (1.0 - a);
+	float k2 = b - a;
+	float k3 = a * (1.0 - b);
+	return (k1 * x) / (k2 * x + k3);
 }
 
 float Schlick1(float a, float b, float x) {
