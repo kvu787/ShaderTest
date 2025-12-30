@@ -31,7 +31,7 @@ void fragment() {
 	float facingRatio = clamp(normal.z, 0.0, 1.0);
 
 	ALBEDO = vec3(
-		ModifiedSchlicksBias_Safe(facingRatioPositionOfBaseColor, _BASE_COLOR.r, facingRatio),
-		ModifiedSchlicksBias_Safe(facingRatioPositionOfBaseColor, _BASE_COLOR.g, facingRatio),
-		ModifiedSchlicksBias_Safe(facingRatioPositionOfBaseColor, _BASE_COLOR.b, facingRatio));
+		Schlick1(facingRatioPositionOfBaseColor, _BASE_COLOR.r, facingRatio),
+		Schlick1(facingRatioPositionOfBaseColor, _BASE_COLOR.g, facingRatio),
+		Schlick1(facingRatioPositionOfBaseColor, _BASE_COLOR.b, facingRatio));
 }

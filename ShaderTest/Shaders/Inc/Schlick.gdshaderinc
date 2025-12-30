@@ -27,7 +27,7 @@ float Schlick1_Raw(float a, float b, float x) {
 	} else if ((0.0 < a && a < 1.0) && (b == 0.0)) {
 		return 0.0;
 	} else if ((0.0 < a && a < 1.0) && (0.0 < b && b < 1.0)) {
-		return ModifiedSchlicksBias(a, b, x);
+		return Schlick1_Raw(a, b, x);
 	} else if ((0.0 < a && a < 1.0) && (b == 1.0)) {
 		return 1.0;
 	} else if ((a == 1.0) && (b == 0.0)) {
@@ -38,7 +38,7 @@ float Schlick1_Raw(float a, float b, float x) {
 		return x;
 	}
 */
-float ModifiedSchlicksBias_Safe(float a, float b, float x) {
+float Schlick1(float a, float b, float x) {
 	a = clamp(a, 0.0, 1.0);
 	b = clamp(b, 0.0, 1.0);
 	x = clamp(x, 0.0, 1.0);
