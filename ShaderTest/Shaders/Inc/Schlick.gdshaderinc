@@ -96,7 +96,7 @@ float Schlick2(float a, float b, float c, float d, float x) {
 	// TODO: Review/prove the below Gemini-generated code for soundness.
 
 	// 1. Common case: Both inputs are within the standard range.
-	if (a > 0.0 && a < 1.0 && b != c && b != d) {
+	if (a > 0.0 && a < 1.0 && b > c && b < d && c < d) {
 		return clamp(Schlick2_Raw(a, b, c, d, x), 0.0, 1.0);
 	}
 
