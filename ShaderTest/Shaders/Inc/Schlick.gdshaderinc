@@ -34,6 +34,7 @@ float ModifiedSchlicksBias(float a, float b, float x) {
 float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	a = clamp(a, 0.0, 1.0);
 	b = clamp(b, 0.0, 1.0);
+	x = clamp(x, 0.0, 1.0);
 
 	// 1. Most common case: Both inputs are within the standard range.
 	// Check this first to skip all edge-case logic for the majority of pixels.
@@ -67,9 +68,54 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	}
 
 	// 4. Return 0.0 cases:
-	// Effectively covers the remaining scenarios:
 	// - b == 0 (and a != 0)
 	// - a == 1 (and b != 1)
+	if (a == 1.0 || b == 0.0) {
+		return 1.0;
+	}
+
+	// This doesn't handle a defined case.
+	return 0.0;
+}
+
+float Schlick2_Raw(float a, float b, float c, float d, float x) {
+	float k1 = d * (b - c) - a * b * (d - c);
+	float k2 = a * c * (d - b);
+	float k3 = (b - c) - a * (d - c);
+	float k4 = a * (d - b);
+	return (k1 * x + k2) / (k3 * x + k4);
+}
+
+float Schlick2(float a, float b, float c, float d, float x) {
+	a = clamp(a, 0.0, 1.0);
+	b = clamp(b, 0.0, 1.0);
+	c = clamp(c, 0.0, 1.0);
+	d = clamp(d, 0.0, 1.0);
+	x = clamp(x, 0.0, 1.0);
+
+	// TODO: Review/prove the below Gemini-generated code for soundness.
+
+	// 1. Common case: Both inputs are within the standard range.
+	if (a > 0.0 && a < 1.0 && b != c && b != d) {
+		return Schlick2_Raw(a, b, c, d, x);
+	}
+
+	// 2. Linear cases: (a=0, b=c) or (a=1, b=d)
+	if ((a == 0.0 && b == c) || (a == 1.0 && b == d)) {
+		return mix(c, d, x);
+	}
+
+	// 3. Constant d cases:
+	if (b == d || a == 0.0) {
+		return d;
+	}
+
+	// 4. Constant c cases:
+	if (b == c || a == 1.0) {
+		return c;
+	}
+
+	// This doesn't handle a defined case.
 	return 0.0;
 }
 
