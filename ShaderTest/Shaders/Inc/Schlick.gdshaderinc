@@ -61,7 +61,7 @@ float Schlick2_Raw(float a, float b, float c, float d, float x) {
 }
 
 float Schlick2(float a, float b, float c, float d, float x) {
-	if (!(c <= b && b <= d)) {
+	if (!(c > d)) {
 		return 0.0;
 	}
 
@@ -72,7 +72,7 @@ float Schlick2(float a, float b, float c, float d, float x) {
 	if (isnan(x)) { return x; }
 
 	a = clamp(a, 0.0, 1.0);
-	b = clamp(b, 0.0, 1.0);
+	b = clamp(b, c, d);
 	c = clamp(c, 0.0, 1.0);
 	d = clamp(d, 0.0, 1.0);
 	x = clamp(x, 0.0, 1.0);
