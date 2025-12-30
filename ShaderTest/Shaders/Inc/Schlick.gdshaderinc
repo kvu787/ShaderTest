@@ -1,7 +1,14 @@
 #ifndef SCHLICK_INC
 #define SCHLICK_INC
 
-float ModifiedSchlicksBias(float a, float b, float x) {
+/*
+	This is a modified form of Christophe Schlick's bias function.
+
+	References:
+	1. Graphics Gems IV, 1994, Christophe Schlick
+	2. A Convenient Generalization of Schlick's Bias and Gain Function, 2020, Jonathan T. Barron
+*/
+float Schlick1_Raw(float a, float b, float x) {
 	float c1 = b * (1.0 - a);
 	float c2 = b - a;
 	float c3 = a * (1.0 - b);
@@ -39,7 +46,7 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	// 1. Most common case: Both inputs are within the standard range.
 	// Check this first to skip all edge-case logic for the majority of pixels.
 	if (a > 0.0 && a < 1.0 && b > 0.0 && b < 1.0) {
-		return clamp(ModifiedSchlicksBias(a, b, x), 0.0, 1.0);
+		return clamp(Schlick1_Raw(a, b, x), 0.0, 1.0);
 	}
 
 	// 2. Pass-through cases: (0,0) and (1,1)
@@ -78,6 +85,10 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	return 0.0;
 }
 
+/*
+	This modifies Schlick1_Raw to be able to "squish" the output into the [c, d] range.
+	Even though the output is bounded in [c, d] the curve still intersects point (a, b).
+*/
 float Schlick2_Raw(float a, float b, float c, float d, float x) {
 	float k1 = d * (b - c) - a * b * (d - c);
 	float k2 = a * c * (d - b);
@@ -86,6 +97,18 @@ float Schlick2_Raw(float a, float b, float c, float d, float x) {
 	return (k1 * x + k2) / (k3 * x + k4);
 }
 
+/*
+	TODO: Verify that the following edge cases are handled:
+	- b > d
+	- b < c
+	- c > d
+	- c == d && b == c
+	- c == d && b != c
+
+	TODO: Actually, the above edge cases can lead to desired behavior.
+	Investigate more and figure out the best way to handle them.
+	Experiment with different parameters here: https://www.desmos.com/calculator/7ceibpeqtn
+*/
 float Schlick2(float a, float b, float c, float d, float x) {
 	a = clamp(a, 0.0, 1.0);
 	b = clamp(b, 0.0, 1.0);
@@ -115,7 +138,7 @@ float Schlick2(float a, float b, float c, float d, float x) {
 		return c;
 	}
 
-	// This doesn't handle a defined case.
+	// This handles some edge cases maybe?
 	return 0.0;
 }
 
