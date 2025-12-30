@@ -71,7 +71,7 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	// - b == 0 (and a != 0)
 	// - a == 1 (and b != 1)
 	if (a == 1.0 || b == 0.0) {
-		return 1.0;
+		return 0.0;
 	}
 
 	// This doesn't handle a defined case.
