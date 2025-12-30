@@ -39,7 +39,7 @@ float ModifiedSchlicksBias_Safe(float a, float b, float x) {
 	// 1. Most common case: Both inputs are within the standard range.
 	// Check this first to skip all edge-case logic for the majority of pixels.
 	if (a > 0.0 && a < 1.0 && b > 0.0 && b < 1.0) {
-		return ModifiedSchlicksBias(a, b, x);
+		return clamp(ModifiedSchlicksBias(a, b, x), 0.0, 1.0);
 	}
 
 	// 2. Pass-through cases: (0,0) and (1,1)
@@ -97,12 +97,12 @@ float Schlick2(float a, float b, float c, float d, float x) {
 
 	// 1. Common case: Both inputs are within the standard range.
 	if (a > 0.0 && a < 1.0 && b != c && b != d) {
-		return Schlick2_Raw(a, b, c, d, x);
+		return clamp(Schlick2_Raw(a, b, c, d, x), 0.0, 1.0);
 	}
 
 	// 2. Linear cases: (a=0, b=c) or (a=1, b=d)
 	if ((a == 0.0 && b == c) || (a == 1.0 && b == d)) {
-		return mix(c, d, x);
+		return clamp(mix(c, d, x), 0.0, 1.0);
 	}
 
 	// 3. Constant d cases:
