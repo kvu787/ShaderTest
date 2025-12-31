@@ -15,14 +15,15 @@ uniform float _SHADING_SHIFT_ROTATION_DEGREES : hint_range(0, 360.0) = 0.0;
 void fragment() {
 	vec3 normal = normalize(NORMAL);
 
-	float maxShadingShift = min(_FACING_RATIO_POSITION_OF_BASE_COLOR, 1.0 - _FACING_RATIO_POSITION_OF_BASE_COLOR);
 	vec2 rotatedNormalXY = RotateXY(normal.xy, -1.0 * _SHADING_SHIFT_ROTATION_DEGREES * PI / 180.0);
+	float maxShadingShift = min(_FACING_RATIO_POSITION_OF_BASE_COLOR, 1.0 - _FACING_RATIO_POSITION_OF_BASE_COLOR);
 	float shadingShift = float(_ENABLE_SHADING_SHIFT) * (rotatedNormalXY.x * _SHADING_SHIFT_RATIO * maxShadingShift);
-	float facingRatioPositionOfBaseColor = clamp(_FACING_RATIO_POSITION_OF_BASE_COLOR - shadingShift, 0.0, 1.0);
+	float facingRatioPositionOfBaseColorShifted = clamp(_FACING_RATIO_POSITION_OF_BASE_COLOR - shadingShift, 0.0, 1.0);
+
 	float facingRatio = clamp(normal.z, 0.0, 1.0);
 
 	ALBEDO = vec3(
-		SchlickAB(facingRatio, facingRatioPositionOfBaseColor, _BASE_COLOR.r),
-		SchlickAB(facingRatio, facingRatioPositionOfBaseColor, _BASE_COLOR.g),
-		SchlickAB(facingRatio, facingRatioPositionOfBaseColor, _BASE_COLOR.b));
+		SchlickAB(facingRatio, facingRatioPositionOfBaseColorShifted, _BASE_COLOR.r),
+		SchlickAB(facingRatio, facingRatioPositionOfBaseColorShifted, _BASE_COLOR.g),
+		SchlickAB(facingRatio, facingRatioPositionOfBaseColorShifted, _BASE_COLOR.b));
 }
