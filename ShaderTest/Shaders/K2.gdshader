@@ -6,6 +6,8 @@ render_mode unshaded;
 #include "res://Shaders/Inc/Numbers.gdshaderinc"
 #include "res://Shaders/Inc/Schlick.gdshaderinc"
 
+const float Z_EPSILON = 0.0001;
+
 uniform vec4 _BASE_COLOR : source_color = __BLUE;
 uniform float _BASE_COLOR_POSITION : hint_range(0.0, 1.0) = __COSINE_45_DEG;
 uniform float _SHIFT : hint_range(0.0, 1.0) = 0.0;
@@ -27,7 +29,11 @@ float XComponent(float y, float z) {
 	The output of RemapFacingRatio forms a surface that is smooth (infinitely differentiable) with respect to x and y.
 	The remapped surface resembles a warped hemisphere.
 */
-float RemapFacingRatio(float x, float y, float xShift) {
+float RemapFacingRatio(float x, float y, float z, float xShift) {
+	if (abs(z) < Z_EPSILON) {
+		return 0.0;
+	}
+
 	float xStart = -XComponent(y, 0.0);
 	float xEnd = XComponent(y, 0.0);
 	float schlickT = MapRange(x, xStart, xEnd, 0.0, 1.0);
@@ -42,7 +48,7 @@ void fragment() {
 	vec3 normal = normalize(NORMAL);
 
 	vec2 rotatedNormalXY = RotateXY(normal.xy, -1.0 * _ROTATION * PI / 180.0);
-	float facingRatio = RemapFacingRatio(rotatedNormalXY.x, rotatedNormalXY.y, _SHIFT);
+	float facingRatio = RemapFacingRatio(rotatedNormalXY.x, rotatedNormalXY.y, normal.z, _SHIFT);
 
 	float facingRatioPositionOfBaseColor = _BASE_COLOR_POSITION;
 	ALBEDO = vec3(
