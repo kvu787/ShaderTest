@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ph2184xhrvn0"]
 
-[ext_resource type="Shader" uid="uid://3ybwuxra4bbn" path="res://Shaders/K2.gdshader" id="1_wf8rq"]
+[ext_resource type="Shader" uid="uid://3ybwuxra4bbn" path="res://Shaders/K2.gdshader" id="1_q0j3q"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_wf8rq")
+shader = ExtResource("1_q0j3q")
 shader_parameter/_BASE_COLOR = Color(0.195, 0.5, 0.28141665, 1)
-shader_parameter/_BASE_COLOR_POSITION = 0.7870000373825
-shader_parameter/_SHIFT = 0.410000019475
+shader_parameter/_BASE_COLOR_POSITION = 0.7990000379525
+shader_parameter/_SHIFT = 0.0
 shader_parameter/_ROTATION = 42.4800020178
