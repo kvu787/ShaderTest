@@ -65,7 +65,7 @@ float SchlickABCD_Raw(float t, float a, float b, float c, float d) {
 }
 
 float SchlickABCD(float t, float a, float b, float c, float d) {
-	if (!(c > d)) {
+	if (c > d) {
 		return 0.0;
 	}
 
