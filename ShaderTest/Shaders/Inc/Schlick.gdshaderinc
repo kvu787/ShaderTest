@@ -48,6 +48,10 @@ float Schlick1(float a, float b, float x) {
 	return 0.0;
 }
 
+float SchlickA(float t, float a) {
+	return Schlick1(a, 0.5, t);
+}
+
 /*
 	This modifies Schlick1_Raw to be able to "squish" the output into the [c, d] range.
 	Even though the output is bounded in [c, d] the curve still intersects point (a, b).
