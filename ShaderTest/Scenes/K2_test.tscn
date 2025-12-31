@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://blh11esdb42"]
 
-[ext_resource type="Material" uid="uid://ph2184xhrvn0" path="res://Materials/K2_Test.tres" id="1_4q1tk"]
+[ext_resource type="Material" uid="uid://ph2184xhrvn0" path="res://Materials/K2_test2.tres" id="1_4q1tk"]
 [ext_resource type="PackedScene" uid="uid://dygrb3acjjtqy" path="res://Scenes/Suzanne.tscn" id="2_uuvcs"]
 [ext_resource type="Material" uid="uid://dxcgtkq5wx5jk" path="res://Materials/White_Plane.tres" id="3_0xevj"]
 
