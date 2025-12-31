@@ -8,14 +8,14 @@
 	1. Graphics Gems IV, 1994, Christophe Schlick
 	2. A Convenient Generalization of Schlick's Bias and Gain Function, 2020, Jonathan T. Barron
 */
-float Schlick1_Raw(float t, float a, float b) {
+float SchlickAB_Raw(float t, float a, float b) {
 	float k1 = b * (1.0 - a);
 	float k2 = b - a;
 	float k3 = a * (1.0 - b);
 	return (k1 * t) / (k2 * t + k3);
 }
 
-float Schlick1(float t, float a, float b) {
+float SchlickAB(float t, float a, float b) {
 	if (isnan(t)) { return t; }
 	if (isnan(a)) { return a; }
 	if (isnan(b)) { return b; }
@@ -33,7 +33,7 @@ float Schlick1(float t, float a, float b) {
 	} else if ((0.0 < a && a < 1.0) && (b == 0.0)) {
 		return 0.0;
 	} else if ((0.0 < a && a < 1.0) && (0.0 < b && b < 1.0)) {
-		return Schlick1_Raw(t, a, b);
+		return SchlickAB_Raw(t, a, b);
 	} else if ((0.0 < a && a < 1.0) && (b == 1.0)) {
 		return 1.0;
 	} else if ((a == 1.0) && (b == 0.0)) {
@@ -49,11 +49,11 @@ float Schlick1(float t, float a, float b) {
 }
 
 float SchlickA(float t, float a) {
-	return Schlick1(t, a, 0.5);
+	return SchlickAB(t, a, 0.5);
 }
 
 /*
-	This modifies Schlick1_Raw to be able to "squish" the output into the [c, d] range.
+	This modifies SchlickAB_Raw to be able to "squish" the output into the [c, d] range.
 	Even though the output is bounded in [c, d] the curve still intersects point (a, b).
 */
 float Schlick2_Raw(float a, float b, float c, float d, float x) {
