@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dftabxsea6owt"]
+
+[ext_resource type="PackedScene" uid="uid://cwnmnrowfvxkg" path="res://Scenes/WedgeCar.tscn" id="1_l8wa2"]
+[ext_resource type="Material" uid="uid://rf6tnynuu0iy" path="res://Materials/WedgeCar/Palette3/new_shader_material.tres" id="2_s4g4u"]
+[ext_resource type="Material" uid="uid://dmwapnrg7kos2" path="res://Materials/SolidColors/Black.tres" id="5_g7d46"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ucvpw"]
+
+[node name="Root" type="Node3D"]
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8161376, 0.5778576, 0, -0.5778576, 0.8161376, 0, 0.8577118, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
+projection = 1
+size = 5.725
+
+[node name="WedgeCar" parent="." instance=ExtResource("1_l8wa2")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="_WedgeCar" parent="WedgeCar" index="0"]
+surface_material_override/0 = ExtResource("2_s4g4u")
+surface_material_override/1 = ExtResource("2_s4g4u")
+surface_material_override/2 = ExtResource("2_s4g4u")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.792591, 0, 0, 0, 1, 0, 0, 0, 5.7710743, 0, 0, 0)
+material_override = ExtResource("5_g7d46")
+mesh = SubResource("PlaneMesh_ucvpw")
+
+[editable path="WedgeCar"]
