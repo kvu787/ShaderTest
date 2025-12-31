@@ -9,7 +9,7 @@ render_mode unshaded;
 const float Z_EPSILON = 0.0001;
 
 uniform vec4 _BASE_COLOR : source_color = __BLUE;
-uniform float _BASE_COLOR_POSITION : hint_range(0.0, 1.0) = __COSINE_45_DEG;
+uniform float _BASE_COLOR_POSITION : hint_range(0.0, 1.0) = __COSINE_37_DEG;
 uniform float _SHIFT : hint_range(0.0, 1.0) = 0.0;
 uniform float _ROTATION : hint_range(0.0, 360.0) = 0.0;
 
