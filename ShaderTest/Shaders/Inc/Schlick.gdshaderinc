@@ -8,24 +8,24 @@
 	1. Graphics Gems IV, 1994, Christophe Schlick
 	2. A Convenient Generalization of Schlick's Bias and Gain Function, 2020, Jonathan T. Barron
 */
-float Schlick1_Raw(float a, float b, float x) {
+float Schlick1_Raw(float t, float a, float b) {
 	float k1 = b * (1.0 - a);
 	float k2 = b - a;
 	float k3 = a * (1.0 - b);
-	return (k1 * x) / (k2 * x + k3);
+	return (k1 * t) / (k2 * t + k3);
 }
 
-float Schlick1(float a, float b, float x) {
+float Schlick1(float t, float a, float b) {
+	if (isnan(t)) { return t; }
 	if (isnan(a)) { return a; }
 	if (isnan(b)) { return b; }
-	if (isnan(x)) { return x; }
 
+	t = clamp(t, 0.0, 1.0);
 	a = clamp(a, 0.0, 1.0);
 	b = clamp(b, 0.0, 1.0);
-	x = clamp(x, 0.0, 1.0);
 
 	if ((a == 0.0) && (b == 0.0)) {
-		return x;
+		return t;
 	} else if ((a == 0.0) && (0.0 < b && b < 1.0)) {
 		return 1.0;
 	} else if ((a == 0.0) && (b == 1.0)) {
@@ -33,7 +33,7 @@ float Schlick1(float a, float b, float x) {
 	} else if ((0.0 < a && a < 1.0) && (b == 0.0)) {
 		return 0.0;
 	} else if ((0.0 < a && a < 1.0) && (0.0 < b && b < 1.0)) {
-		return Schlick1_Raw(a, b, x);
+		return Schlick1_Raw(t, a, b);
 	} else if ((0.0 < a && a < 1.0) && (b == 1.0)) {
 		return 1.0;
 	} else if ((a == 1.0) && (b == 0.0)) {
@@ -41,7 +41,7 @@ float Schlick1(float a, float b, float x) {
 	} else if ((a == 1.0) && (0.0 < b && b < 1.0)) {
 		return 0.0;
 	} else if ((a == 1.0) && (b == 1.0)) {
-		return x;
+		return t;
 	}
 
 	// This doesn't handle a defined case.
@@ -49,7 +49,7 @@ float Schlick1(float a, float b, float x) {
 }
 
 float SchlickA(float t, float a) {
-	return Schlick1(a, 0.5, t);
+	return Schlick1(t, a, 0.5);
 }
 
 /*

@@ -44,8 +44,8 @@ void fragment() {
 		float facingRatio = FacingRatio(rotatedNormalXY.x, rotatedNormalXY.y, _SHIFT);
 
 		ALBEDO = vec3(
-			Schlick1(_FACING_RATIO_POSITION_OF_BASE_COLOR, _BASE_COLOR.r, facingRatio),
-			Schlick1(_FACING_RATIO_POSITION_OF_BASE_COLOR, _BASE_COLOR.g, facingRatio),
-			Schlick1(_FACING_RATIO_POSITION_OF_BASE_COLOR, _BASE_COLOR.b, facingRatio));
+			Schlick1(facingRatio, _FACING_RATIO_POSITION_OF_BASE_COLOR, _BASE_COLOR.r),
+			Schlick1(facingRatio, _FACING_RATIO_POSITION_OF_BASE_COLOR, _BASE_COLOR.g),
+			Schlick1(facingRatio, _FACING_RATIO_POSITION_OF_BASE_COLOR, _BASE_COLOR.b));
 	}
 }
