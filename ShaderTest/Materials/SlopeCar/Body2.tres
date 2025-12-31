@@ -6,6 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_y5twl")
 shader_parameter/_BASE_COLOR = Color(0.09130001, 0.39909172, 0.83, 1)
-shader_parameter/_COSINE_PHI_POSITION_OF_BASE_COLOR = 0.5770000274075
+shader_parameter/_FACING_RATIO_POSITION_OF_BASE_COLOR = 0.5770000274075
 shader_parameter/_ENABLE_SHADING_SHIFT = true
-shader_parameter/_SHADING_SHIFT = 0.50000002375
+shader_parameter/_SHADING_SHIFT_RATIO = 0.5
+shader_parameter/_SHADING_SHIFT_ROTATION_DEGREES = 0.0
