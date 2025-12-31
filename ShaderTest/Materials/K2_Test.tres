@@ -6,7 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_wf8rq")
 shader_parameter/_BASE_COLOR = Color(0.195, 0.5, 0.28141665, 1)
-shader_parameter/_FACING_RATIO_POSITION_OF_BASE_COLOR = 0.70710677
+shader_parameter/_FACING_RATIO_POSITION_OF_BASE_COLOR = 0.7870000373825
 shader_parameter/_SHIFT = 0.410000019475
-shader_parameter/_ROTATION = 20.2550009621125
-shader_parameter/_RADIUS = 1.0
+shader_parameter/_ROTATION = 42.4800020178
+shader_parameter/_ROTATION_FLIP = false
